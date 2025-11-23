@@ -1,0 +1,16 @@
+[package]
+name = "sys-triage"
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive"] }
+sysinfo = "0.30"
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.9"
+anyhow = "1.0"
+rayon = "1.8"
+tokio = { version = "1", features = ["full"] }
+byte-unit = "5.1"
+crossterm = "0.27"
+futures = "0.3"
