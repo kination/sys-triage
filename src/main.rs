@@ -36,6 +36,7 @@ async fn main() -> Result<()> {
         },
         // TODO: Block drop command temporary
         Commands::Drop { resource } => match resource {
+            _ => todo!(),
             // ResourceDropType::Cpu => cpu::drop(config)?,
             // ResourceDropType::Disk { ext } => disk::drop_files(config, ext).await?,
         },
