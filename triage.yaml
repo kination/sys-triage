@@ -1,14 +1,9 @@
 cpu:
-  # 테스트를 위해 임계값을 낮춥니다. (대부분의 프로세스가 1% 이상 사용하므로 쉽게 감지 가능)
   threshold_max: 1.0 
 disk:
-  # 안전한 테스트를 위해 임시 디렉토리(./test_data)만 스캔하도록 설정
   scan_paths:
     - "./test_data"
-  # 매우 작은 파일도 감지하도록 설정 (예: 1 KB 초과)
   size_threshold: "1 KB"
 network:
-  # 네트워크 사용량이 100 KB/s를 초과할 경우 감지
   threshold_rx: "100 KB" 
   threshold_tx: "100 KB"
-  

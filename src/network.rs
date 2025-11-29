@@ -17,7 +17,6 @@ pub async fn check(config: Arc<Config>) -> Result<()> {
     let mut networks = Networks::new_with_refreshed_list();
     info!("Measuring Network I/O (1 second sample)...");
     
-    // 비동기 sleep 사용 (메인 스레드 블로킹 방지)
     tokio::time::sleep(Duration::from_secs(1)).await;
     networks.refresh();
 

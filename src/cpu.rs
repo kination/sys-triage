@@ -11,13 +11,10 @@ use rayon::prelude::*;
 
 pub fn check(config: Arc<Config>) -> Result<()> {
     let mut sys = System::new_all();
-    // First refresh to establish baseline
     sys.refresh_processes();
     
     info!("Measure CPU usage (1 second)...");
     std::thread::sleep(Duration::from_secs(1));
-    
-    // Second refresh to calculate delta
     sys.refresh_processes();
 
     let (max_th, min_th) = get_thresholds(&config);

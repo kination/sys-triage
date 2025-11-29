@@ -23,11 +23,9 @@ async fn main() -> Result<()> {
     }
     env_logger::init();
     
-    // 설정 로드
     let config = Config::load(&cli.config).await?;
     let config = Arc::new(config);
 
-    // 커맨드 분기 처리
     match cli.command {
         Commands::Check { resource } => match resource {
             ResourceType::Cpu => cpu::check(config)?,
@@ -35,8 +33,9 @@ async fn main() -> Result<()> {
             ResourceType::Network => network::check(config).await?,
         },
         Commands::Drop { resource } => match resource {
-            ResourceDropType::Cpu => cpu::drop(config)?,
-            ResourceDropType::Disk { ext } => disk::drop_files(config, ext).await?,
+            _ => unimplemented!(),
+            // ResourceDropType::Cpu => cpu::drop(config)?,
+            // ResourceDropType::Disk { ext } => disk::drop_files(config, ext).await?,
         },
     }
 
