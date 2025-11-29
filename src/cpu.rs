@@ -8,7 +8,6 @@ use crossterm::style::Stylize;
 use rayon::prelude::*;
 
 
-
 pub fn check(config: Arc<Config>) -> Result<()> {
     let mut sys = System::new_all();
     sys.refresh_processes();
