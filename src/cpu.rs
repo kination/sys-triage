@@ -1,5 +1,5 @@
 use crate::config::Config;
-use log::info;
+use log::{info, debug};
 use std::sync::Arc;
 use std::time::Duration;
 use sysinfo::System;
@@ -29,7 +29,7 @@ pub fn check(config: Arc<Config>) -> Result<()> {
         .par_iter()
         .filter(|(_, proc)| {
             let usage = proc.cpu_usage();
-            info!("usage -> {:.4}", usage);
+            debug!("usage -> {:.4}", usage);
             usage > max_th || usage < min_th
         })
         .for_each(|(pid, proc)| {

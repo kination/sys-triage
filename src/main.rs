@@ -34,8 +34,8 @@ async fn main() -> Result<()> {
             ResourceType::Network => network::check(config).await?,
         },
         Commands::Drop { resource } => match resource {
-            ResourceDropType::Cpu => cpu::drop(config)?,
-            ResourceDropType::Disk { ext } => disk::drop_files(config, ext).await?,
+            // ResourceDropType::Cpu => cpu::drop(config)?,
+            // ResourceDropType::Disk { ext } => disk::drop_files(config, ext).await?,
         },
     }
 
