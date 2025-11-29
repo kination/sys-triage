@@ -18,7 +18,8 @@ async fn main() -> Result<()> {
 
     // Initialize logger with default level "info" if RUST_LOG is not set
     if std::env::var("RUST_LOG").is_err() {
-        std::env::set_var("RUST_LOG", "info");
+        // SAFETY: This is safe because it's called early in main before any other threads are spawned
+        unsafe { std::env::set_var("RUST_LOG", "info"); }
     }
     env_logger::init();
     
@@ -33,6 +34,7 @@ async fn main() -> Result<()> {
             ResourceType::Disk => disk::check(config).await?,
             ResourceType::Network => network::check(config).await?,
         },
+        // TODO: Block drop command temporary
         Commands::Drop { resource } => match resource {
             // ResourceDropType::Cpu => cpu::drop(config)?,
             // ResourceDropType::Disk { ext } => disk::drop_files(config, ext).await?,
